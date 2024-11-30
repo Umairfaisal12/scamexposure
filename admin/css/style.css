@@ -1,0 +1,138 @@
+/* General Reset and Layout Adjustments */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container3 {
+    max-width: 1200px;
+    margin: 50px auto; /* Center the container */
+    padding: 0 15px; /* Padding on the sides */
+}
+
+/* Row adjustments */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Align items to the start */
+    gap: 15px; /* Slightly reduce space between tiles */
+    margin-bottom: 20px;
+}
+
+/* First news card takes up 3 columns */
+.col-md-12 {
+    flex: 0 0 100%; /* Full width for the first news card */
+    max-width: 100%;
+    
+}
+
+/* 3x3 Layout for subsequent cards */
+.col-md-4 {
+    flex: 0 0 calc(33.333% - 10px); /* Use calc to account for gap */
+    max-width: calc(33.333% - 10px); /* Ensure each tile occupies approximately one-third of the row */
+    box-sizing: border-box;
+}
+
+/* Image adjustments for the first tile */
+.news-card:first-child .news-card-body img {
+    width: 100%; /* Full width for the first tile image */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Cover the area without distortion */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .col-md-4, .col-md-12 {
+        flex: 0 0 100%;
+        max-width: 100%; /* Full width for smaller screens */
+    }
+}
+
+/* Additional CSS for image slider */
+.image-slider {
+    position: relative;
+    width: 100%; /* Full width */
+    height: 300px; /* Fixed height for consistency */
+    overflow: hidden; /* Hide overflow */
+}
+
+.image-slider img {
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    object-fit: cover; /* Ensure the image covers the area without distorting */
+    object-position: center; /* Center the image within its container */
+    position: absolute; /* Keep images stacked */
+    top: 0;
+    left: 0;
+    opacity: 0; /* Start with hidden images */
+    transition: opacity 1s ease-in-out; /* Smooth transition */
+}
+
+.image-slider img.active {
+    opacity: 1; /* Show active image */
+}
+
+/* Styles for the news card */
+.news-card {
+    margin-bottom: 20px; /* Space between news cards */
+    border: 1px solid #ddd; /* Border around cards */
+    border-radius: 10px; /* Rounded corners */
+    overflow: hidden; /* Prevent overflow */
+    background-color: #fff; /* Ensure background color */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for transform and shadow */
+}
+
+.news-card:hover {
+    transform: scale(1.05); /* Scale up the card on hover */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Add shadow effect on hover */
+}
+
+/* Styles for the news card description */
+.news-card-body {
+    padding: 15px; /* Add padding for inner spacing */
+    position: relative; /* Positioning for child elements */
+    height: 100%; /* Ensure news card body takes up full height */
+}
+
+.news-card-body h2 {
+    font-size: 1.5em; /* Reverting to original title size */
+    margin-bottom: 10px; /* Add margin below title */
+    color: #333; /* Dark color for titles */
+}
+
+.news-card-body p {
+    margin: 0; /* Remove margin */
+    line-height: 1.6; /* Line height for readability */
+    display: -webkit-box; /* Create a flex container */
+    display: -moz-box; /* For Firefox support */
+    display: box; /* Fallback for unsupported browsers */
+    -webkit-box-orient: vertical; /* Specify orientation */
+    -moz-box-orient: vertical; /* For Firefox support */
+    box-orient: vertical; /* Fallback for unsupported browsers */
+    -webkit-line-clamp: 5; /* Limit to 5 lines */
+    overflow: hidden; /* Hide overflow */
+}
+
+.the_news {
+    font-size: 2em; /* Larger font size */
+    margin-bottom: 20px; /* Space below the title */
+    color: #333; /* Dark color for titles */
+    text-align: center; /* Center align the title */
+}
+
+/* Ensure all news cards have the same height */
+.news-card {
+    height: 100%; /* Set height to 100% of the parent container */
+}
+
+/* Add a margin between news cards */
+.news-card + .news-card {
+    margin-top: 20px; /* Adjust the margin value as needed */
+}
+
+/* Ensure the last card in a row doesn't have a margin */
+.row:last-child .news-card:last-child {
+    margin-bottom: 0;
+}
+
